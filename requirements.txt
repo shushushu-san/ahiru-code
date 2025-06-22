@@ -1,0 +1,8 @@
+torch
+transformers
+pandas
+numpy
+fugashi
+ipadic
+unidic-lite
+sentencepiece
