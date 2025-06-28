@@ -2,7 +2,7 @@
 
 ## 概要
 
-ユーザーが入力した日本語のテキストから感情を分析し、その感情にマッチしたアヒル語の鳴き声や行動を返すインタラクティブなAIです。
+ユーザーが入力した日本語のテキストから感情を分析し、その感情にマッチしたアヒル語の鳴き声や行動を返します。
 
 ## 特徴
 
@@ -21,21 +21,85 @@
    pip install -r requirements.txt
    ```
 
-   (注: `requirements.txt` がない場合は、`pip install torch transformers pandas fugashi ipadic unidic-lite sentencepiece` を実行してください)
+   **PowerShellの場合の注意:** 初回実行時にスクリプトの実行が拒否された場合は、以下のコマンドを実行してください：
 
-2. `main.py` を実行します。
+   ```powershell
+   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+   ```
+
+2. **（オプション）どこからでも実行できるようにする設定:**
+
+   **自動セットアップ（推奨）:**
+
+   ```shell
+   setup.bat
+   ```
+
+   **PowerShell実行ポリシーエラーが出る場合:**
+
+   ```shell
+   .\setup.ps1
+   ```
+
+   **PATH設定確認:**
+
+   ```shell
+   .\check_path.bat
+   ```
+
+   **手動でWindows環境変数を設定:**
+   1. `Win + R` を押して `sysdm.cpl` を実行
+   2. 「詳細設定」タブ → 「環境変数」をクリック
+   3. ユーザー環境変数の「Path」を選択 → 「編集」
+   4. 「新規」をクリックして、`ahiru-code`フォルダの絶対パスを追加
+      例: `C:\Users\gents\1.University\Projects\Yukari_tech\ahiruAI\ahiru-code`
+   5. 「OK」で保存し、新しいターミナルを開く
+
+   **PowerShellで一時的に設定する場合:**
+
+   ```powershell
+   $env:PATH += ";C:\Users\gents\1.University\Projects\Yukari_tech\ahiruAI\ahiru-code"
+   ```
+
+3. プログラムを実行します。以下のいずれかの方法で実行できます：
+
+   **方法1: 専用コマンド（推奨）**
+
+   ```shell
+   # PowerShellの場合
+   .\ahiru
+   
+   # コマンドプロンプトの場合
+   ahiru
+   ```
+
+   **方法2: Pythonスクリプトとして直接実行**
+
+   ```shell
+   python ahiru.py
+   ```
+
+   **方法3: メインファイルを直接実行**
 
    ```shell
    python main.py
    ```
 
-3. コンソールに日本語で話しかけると、アヒルAIがアヒル語で応答します。終了するには `exit` または`さようなら`と入力してください。
+4. コンソールに日本語で話しかけると、アヒルAIがアヒル語で応答します。終了するには `exit` または`さようなら`と入力してください。
 
 ## ファイル構造
 
 ```text
 ahiru-code/
 │
+├── setup.bat               # PATH設定用セットアップスクリプト
+├── setup.ps1               # PATH設定用セットアップスクリプト（PowerShell版）
+├── check_path.bat          # PATH設定確認スクリプト
+├── test_ahiru.ps1          # ahiruコマンドテストスクリプト
+├── ahiru.cmd               # 統合実行スクリプト（推奨）
+├── ahiru.py                # 実行用スクリプト
+├── ahiru.bat               # Windows用バッチファイル
+├── ahiru.ps1               # PowerShell用スクリプト
 ├── main.py                 # AIのメインプログラム
 ├── vad_analyzer.py         # VADスコアを分析・算出するモジュール
 ├── duck_translator.py      # VADスコアに対応するアヒル語を選択するモジュール
