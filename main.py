@@ -22,15 +22,7 @@ def load_ascii_art():
         with open(assets_path, 'r', encoding='utf-8') as f:
             return f.read()
     except FileNotFoundError:
-        # ファイルが見つからない場合はシンプルなバージョンを返す
-        return """
-     █████╗ ██╗  ██╗██╗██████╗ ██╗   ██╗
-    ██╔══██╗██║  ██║██║██╔══██╗██║   ██║
-    ███████║███████║██║██████╔╝██║   ██║
-    ██╔══██║██╔══██║██║██╔══██╗██║   ██║
-    ██║  ██║██║  ██║██║██║  ██║╚██████╔╝
-    ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝ ╚═════╝ 
-        """
+        return
 
 def main():
     """AIとの対話を実行する"""
@@ -57,6 +49,9 @@ def main():
         except UnicodeDecodeError:
             print("アヒル: ??? (文字がうまく読み取れないグワ…)")
             continue
+        except KeyboardInterrupt:
+            print("\nアヒル: グワッ… (さびしそうに去っていく)")
+            break
 
         if not user_input:
             continue

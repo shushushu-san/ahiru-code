@@ -1,4 +1,4 @@
-# あひるAI
+# AHIRU-CODE
 
 ## 概要
 
@@ -34,7 +34,7 @@
 ## ファイル構造
 
 ```text
-ahiru-ai/
+ahiru-code/
 │
 ├── main.py                 # AIのメインプログラム
 ├── vad_analyzer.py         # VADスコアを分析・算出するモジュール
