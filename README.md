@@ -8,17 +8,25 @@
 
 ## 実行方法
 
-### 🚀 クイックスタート（GitHubからダウンロードした場合）
+### 🚀 クイックスタート
 
 **前提条件:** Python 3.8以上がインストールされていること
 
-1. **ライブラリをインストール**
+1. **展開したフォルダに移動**
+
+   ```shell
+   cd "展開したフォルダのパス"
+   ```
+
+   例: `cd "C:\Users\username\Downloads\ahiru-code-main"`
+
+2. **ライブラリをインストール**
 
    ```shell
    pip install -r requirements.txt
    ```
 
-2. **自動セットアップを実行** （どこからでもahiruコマンドを使えるようにする）
+3. **どこからでも実行できるようにセットアップ**
 
    **PowerShell（推奨）:**
 
@@ -32,70 +40,17 @@
    scripts\setup.bat
    ```
 
-3. **新しいターミナルを開いて実行**
+4. **新しいターミナルを開いて実行**
 
    ```shell
    ahiru
    ```
-
-### 📋 詳細なセットアップ手順
-
-1. 必要なライブラリをインストールします。
-
-   ```shell
-   pip install -r requirements.txt
-   ```
-
-2. **どこからでも実行できるようにする設定:**
-
-   **自動セットアップ（推奨）:**
-
-   ```shell
-   scripts\setup.bat
-   ```
-
-   **PowerShell実行ポリシーエラーが出る場合:**
-
-   ```shell
-   .\scripts\setup.ps1
-   ```
-
-   **PATH設定確認:**
-
-   ```shell
-   .\scripts\check_path.bat
-   ```
-
-   **手動でWindows環境変数を設定:**
-   1. `Win + R` を押して `sysdm.cpl` を実行
-   2. 「詳細設定」タブ → 「環境変数」をクリック
-   3. ユーザー環境変数の「Path」を選択 → 「編集」
-   4. 「新規」をクリックして、`ahiru-code`フォルダの絶対パスを追加
-      例: `C:\Users\gents\1.University\Projects\Yukari_tech\ahiruAI\ahiru-code`
-   5. 「OK」で保存し、新しいターミナルを開く
-
-3. プログラムを実行します。以下のいずれかの方法で実行できます：
-
-   **方法1: 専用コマンド（推奨）**
-
-   ```shell
-   # どこからでも実行可能（PATH設定後）
-   ahiru
-   ```
-
-   **方法2: Pythonスクリプトとして直接実行**
-
-   ```shell
-   python scripts\ahiru.py
-   ```
-
-4. コンソールに日本語で話しかけると、アヒルAIがアヒル語で応答します。終了するには `exit` または`さようなら`と入力してください。
 
 ### 🖥️ VS Code環境での使用
 
-VS CodeのPowerShellターミナルで使用する場合：
+VS Codeで展開したフォルダを開いてから：
 
-#### 方法1: PowerShell関数として登録（推奨）
+**PowerShell関数として登録（推奨）:**
 
 ```powershell
 .\scripts\vscode_setup.ps1
@@ -103,13 +58,41 @@ VS CodeのPowerShellターミナルで使用する場合：
 
 VS Code再起動後、どこからでも `ahiru` コマンドが使用可能
 
-#### 方法2: 直接実行
+**直接実行:**
 
 ```powershell
 .\ahiru.cmd
 # または
 python scripts\ahiru.py
 ```
+
+### 🔧 その他の実行方法
+
+**PATH設定なしで直接実行:**
+
+```shell
+python scripts\ahiru.py
+```
+
+**PowerShell実行ポリシーエラーが出る場合:**
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+**PATH設定確認:**
+
+```shell
+.\scripts\check_path.bat
+```
+
+### 💬 使用方法
+
+プログラムを起動すると、コンソールでアヒルAIと対話できます：
+
+- 日本語で話しかけると、感情に応じたアヒル語で応答します
+- 終了するには `exit` または `さようなら` と入力してください
+- 初回実行時はモデルのダウンロードに時間がかかることがあります
 
 ## ファイル構造
 
@@ -146,5 +129,6 @@ ahiru-code/
 │   └── duck_language_neutral.csv # ニュートラルなアヒル語表現データ
 │
 └── assets/                 # アセット
-    └── ascii_art.txt       # ASCIIアート
+    ├── ascii_art.txt       # ASCIIアート
+    └── discription.png     # 概要説明画像
 ```
