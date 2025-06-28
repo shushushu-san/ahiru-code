@@ -18,17 +18,22 @@ translator = DuckTranslator()
 def load_ascii_art():
     """ASCIIアートファイルを読み込む"""
     try:
-        assets_path = os.path.join(os.path.dirname(__file__), 'assets', 'ascii_art.txt')
+        # srcフォルダから親ディレクトリ（プロジェクトルート）のassetsフォルダにアクセス
+        project_root = os.path.dirname(os.path.dirname(__file__))
+        assets_path = os.path.join(project_root, 'assets', 'ascii_art.txt')
         with open(assets_path, 'r', encoding='utf-8') as f:
             return f.read()
     except FileNotFoundError:
-        return
+        return None
 
 def main():
     """AIとの対話を実行する"""
     # 初回起動時にデカデカとAHIRU🦢を表示
     ascii_art = load_ascii_art()
-    print(ascii_art)
+    if ascii_art:
+        print(ascii_art)
+    else:
+        print("🦆 AHIRU AI 🦆")  # フォールバック表示
     print("アヒルAI (「さようなら」で終了)")
     print("（初回実行時はモデルのダウンロードに時間がかかることがあります）")
 

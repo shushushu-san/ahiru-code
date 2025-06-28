@@ -89,12 +89,14 @@
 ```text
 ahiru-code/
 │
-├── ahiru.cmd               # メイン実行ファイル（推奨）
-├── main.py                 # AIのメインプログラム
-├── vad_analyzer.py         # VADスコアを分析・算出するモジュール
-├── duck_translator.py      # VADスコアに対応するアヒル語を選択するモジュール
-├── requirements.txt        # 必要なライブラリ一覧
 ├── README.md               # このファイル
+├── requirements.txt        # 必要なライブラリ一覧
+├── ahiru.cmd               # メイン実行ファイル（ユーザー用）
+│
+├── src/                    # ソースコード
+│   ├── main.py             # AIのメインプログラム
+│   ├── vad_analyzer.py     # VADスコアを分析・算出するモジュール
+│   └── duck_translator.py  # VADスコアに対応するアヒル語を選択するモジュール
 │
 ├── scripts/                # 実行・セットアップスクリプト
 │   ├── ahiru.py            # Python実行スクリプト
@@ -109,12 +111,12 @@ ahiru-code/
 │   ├── debug_pathext.bat   # PATHEXT確認スクリプト
 │   └── cleanup.bat         # ファイルクリーンアップスクリプト
 │
-├── data/
+├── data/                   # データファイル
 │   ├── duck_language.csv         # 基本のアヒル語表現データ
 │   ├── duck_language_short.csv   # 短いアヒル語表現データ
 │   ├── duck_language_long.csv    # 長いアヒル語表現データ
 │   └── duck_language_neutral.csv # ニュートラルなアヒル語表現データ
 │
-└── assets/
+└── assets/                 # アセット
     └── ascii_art.txt       # ASCIIアート
 ```
