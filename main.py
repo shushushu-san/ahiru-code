@@ -1,12 +1,34 @@
+import os
 import sys
+import warnings
+import logging
+
+# 警告メッセージを非表示にする
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # TensorFlowのログを非表示（ERRORのみ表示）
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'  # oneDNNの警告を非表示
+warnings.filterwarnings('ignore')
+logging.getLogger('tensorflow').setLevel(logging.ERROR)
+
 from vad_analyzer import get_vad_scores
 from duck_translator import DuckTranslator
 
 # アヒル語翻訳機を準備
 translator = DuckTranslator()
 
+def load_ascii_art():
+    """ASCIIアートファイルを読み込む"""
+    try:
+        assets_path = os.path.join(os.path.dirname(__file__), 'assets', 'ascii_art.txt')
+        with open(assets_path, 'r', encoding='utf-8') as f:
+            return f.read()
+    except FileNotFoundError:
+        return
+
 def main():
     """AIとの対話を実行する"""
+    # 初回起動時にデカデカとAHIRU🦢を表示
+    ascii_art = load_ascii_art()
+    print(ascii_art)
     print("アヒルAI (「さようなら」で終了)")
     print("（初回実行時はモデルのダウンロードに時間がかかることがあります）")
 
@@ -27,6 +49,9 @@ def main():
         except UnicodeDecodeError:
             print("アヒル: ??? (文字がうまく読み取れないグワ…)")
             continue
+        except KeyboardInterrupt:
+            print("\nアヒル: グワッ… (さびしそうに去っていく)")
+            break
 
         if not user_input:
             continue
@@ -42,7 +67,7 @@ def main():
 
         print(f"アヒル: {duck_response}")
         # デバッグ用にVADスコアも表示
-        print(f"（V: {vad_scores['v']:.2f}, A: {vad_scores['a']:.2f}, D: {vad_scores['d']:.2f}）")
+        # print(f"（V: {vad_scores['v']:.2f}, A: {vad_scores['a']:.2f}, D: {vad_scores['d']:.2f}）")
 
 if __name__ == "__main__":
     main()
