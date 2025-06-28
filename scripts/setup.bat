@@ -3,11 +3,11 @@ chcp 65001 >nul
 echo AHIRU-CODE セットアップスクリプト
 echo.
 
-:: 現在のディレクトリを取得
-set "AHIRU_DIR=%~dp0"
+:: プロジェクトルートディレクトリを取得（ahiru.cmdがある場所）
+set "AHIRU_DIR=%~dp0.."
 set "AHIRU_DIR=%AHIRU_DIR:~0,-1%"
 
-echo 現在のディレクトリをPATHに追加します: %AHIRU_DIR%
+echo プロジェクトディレクトリをPATHに追加します: %AHIRU_DIR%
 echo.
 
 :: ユーザー環境変数のPATHに追加

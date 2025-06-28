@@ -4,9 +4,9 @@
 Write-Host "AHIRU-CODE Setup Script" -ForegroundColor Cyan
 Write-Host ""
 
-# 現在のディレクトリを取得
-$ahiruDir = $PSScriptRoot
-Write-Host "Adding current directory to PATH: $ahiruDir" -ForegroundColor Yellow
+# プロジェクトルートディレクトリを取得（ahiru.cmdがある場所）
+$ahiruDir = Split-Path $PSScriptRoot -Parent
+Write-Host "Adding project directory to PATH: $ahiruDir" -ForegroundColor Yellow
 Write-Host ""
 
 try {
@@ -67,8 +67,7 @@ try {
     # テスト実行
     Write-Host "Test execution..." -ForegroundColor Yellow
     Write-Host ""
-    $projectRoot = Split-Path $ahiruDir -Parent
-    & "$projectRoot\ahiru.cmd"
+    & "$ahiruDir\ahiru.cmd"
     
 } catch {
     Write-Host "Setup failed: $($_.Exception.Message)" -ForegroundColor Red

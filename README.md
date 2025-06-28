@@ -15,6 +15,38 @@
 
 ## 実行方法
 
+### 🚀 クイックスタート（GitHubからダウンロードした場合）
+
+**前提条件:** Python 3.8以上がインストールされていること
+
+1. **ライブラリをインストール**
+
+   ```shell
+   pip install -r requirements.txt
+   ```
+
+2. **自動セットアップを実行** （どこからでもahiruコマンドを使えるようにする）
+
+   **PowerShell（推奨）:**
+
+   ```powershell
+   .\scripts\setup.ps1
+   ```
+
+   **コマンドプロンプト:**
+
+   ```cmd
+   scripts\setup.bat
+   ```
+
+3. **新しいターミナルを開いて実行**
+
+   ```shell
+   ahiru
+   ```
+
+### 📋 詳細なセットアップ手順
+
 1. 必要なライブラリをインストールします。
 
    ```shell
@@ -84,12 +116,33 @@
 
 4. コンソールに日本語で話しかけると、アヒルAIがアヒル語で応答します。終了するには `exit` または`さようなら`と入力してください。
 
+### 🖥️ VS Code環境での使用
+
+VS CodeのPowerShellターミナルで使用する場合：
+
+#### 方法1: PowerShell関数として登録（推奨）
+
+```powershell
+.\scripts\vscode_setup.ps1
+```
+
+VS Code再起動後、どこからでも `ahiru` コマンドが使用可能
+
+#### 方法2: 直接実行
+
+```powershell
+.\ahiru.cmd
+# または
+python scripts\ahiru.py
+```
+
 ## ファイル構造
 
 ```text
 ahiru-code/
 │
 ├── README.md               # このファイル
+├── QUICK_START.md          # GitHubダウンロード用クイックスタートガイド
 ├── requirements.txt        # 必要なライブラリ一覧
 ├── ahiru.cmd               # メイン実行ファイル（ユーザー用）
 │
@@ -102,6 +155,7 @@ ahiru-code/
 │   ├── ahiru.py            # Python実行スクリプト
 │   ├── ahiru_ps.ps1        # PowerShell用スクリプト
 │   ├── ahiru_profile.ps1   # PowerShell関数定義
+│   ├── vscode_setup.ps1    # VS Code用セットアップスクリプト
 │   ├── setup.bat           # セットアップスクリプト（CMD用）
 │   ├── setup.ps1           # セットアップスクリプト（PowerShell用）
 │   └── check_path.bat      # PATH設定確認スクリプト
