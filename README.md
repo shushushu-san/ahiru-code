@@ -130,5 +130,5 @@ ahiru-code/
 │
 └── assets/                 # アセット
     ├── ascii_art.txt       # ASCIIアート
-    └── discription.png     # 概要説明画像
+    └── description.png     # 概要説明画像
 ```
