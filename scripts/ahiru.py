@@ -7,9 +7,10 @@ AHIRU-CODE実行スクリプト
 import sys
 import os
 
-# スクリプトのディレクトリをPythonパスに追加
+# スクリプトの親ディレクトリ（プロジェクトルート）をPythonパスに追加
 script_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, script_dir)
+project_root = os.path.dirname(script_dir)  # 親ディレクトリ（プロジェクトルート）
+sys.path.insert(0, project_root)
 
 # main.pyのmain関数を実行
 if __name__ == "__main__":

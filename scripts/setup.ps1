@@ -67,7 +67,8 @@ try {
     # テスト実行
     Write-Host "Test execution..." -ForegroundColor Yellow
     Write-Host ""
-    & "$ahiruDir\ahiru.cmd"
+    $projectRoot = Split-Path $ahiruDir -Parent
+    & "$projectRoot\ahiru.cmd"
     
 } catch {
     Write-Host "Setup failed: $($_.Exception.Message)" -ForegroundColor Red

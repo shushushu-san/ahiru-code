@@ -32,19 +32,19 @@
    **自動セットアップ（推奨）:**
 
    ```shell
-   setup.bat
+   scripts\setup.bat
    ```
 
    **PowerShell実行ポリシーエラーが出る場合:**
 
    ```shell
-   .\setup.ps1
+   .\scripts\setup.ps1
    ```
 
    **PATH設定確認:**
 
    ```shell
-   .\check_path.bat
+   .\scripts\check_path.bat
    ```
 
    **手動でWindows環境変数を設定:**
@@ -66,17 +66,14 @@
    **方法1: 専用コマンド（推奨）**
 
    ```shell
-   # PowerShellの場合
-   .\ahiru
-   
-   # コマンドプロンプトの場合
+   # どこからでも実行可能（PATH設定後）
    ahiru
    ```
 
    **方法2: Pythonスクリプトとして直接実行**
 
    ```shell
-   python ahiru.py
+   python scripts\ahiru.py
    ```
 
    **方法3: メインファイルを直接実行**
@@ -92,17 +89,25 @@
 ```text
 ahiru-code/
 │
-├── setup.bat               # PATH設定用セットアップスクリプト
-├── setup.ps1               # PATH設定用セットアップスクリプト（PowerShell版）
-├── check_path.bat          # PATH設定確認スクリプト
-├── test_ahiru.ps1          # ahiruコマンドテストスクリプト
-├── ahiru.cmd               # 統合実行スクリプト（推奨）
-├── ahiru.py                # 実行用スクリプト
-├── ahiru.bat               # Windows用バッチファイル
-├── ahiru.ps1               # PowerShell用スクリプト
+├── ahiru.cmd               # メイン実行ファイル（推奨）
 ├── main.py                 # AIのメインプログラム
 ├── vad_analyzer.py         # VADスコアを分析・算出するモジュール
 ├── duck_translator.py      # VADスコアに対応するアヒル語を選択するモジュール
+├── requirements.txt        # 必要なライブラリ一覧
+├── README.md               # このファイル
+│
+├── scripts/                # 実行・セットアップスクリプト
+│   ├── ahiru.py            # Python実行スクリプト
+│   ├── ahiru_ps.ps1        # PowerShell用スクリプト
+│   ├── ahiru_profile.ps1   # PowerShell関数定義
+│   ├── setup.bat           # セットアップスクリプト（CMD用）
+│   ├── setup.ps1           # セットアップスクリプト（PowerShell用）
+│   └── check_path.bat      # PATH設定確認スクリプト
+│
+├── tools/                  # 開発・デバッグツール
+│   ├── test_ahiru.ps1      # ahiruコマンドテストスクリプト
+│   ├── debug_pathext.bat   # PATHEXT確認スクリプト
+│   └── cleanup.bat         # ファイルクリーンアップスクリプト
 │
 ├── data/
 │   ├── duck_language.csv         # 基本のアヒル語表現データ
@@ -110,5 +115,6 @@ ahiru-code/
 │   ├── duck_language_long.csv    # 長いアヒル語表現データ
 │   └── duck_language_neutral.csv # ニュートラルなアヒル語表現データ
 │
-└── README.md               # このファイル
+└── assets/
+    └── ascii_art.txt       # ASCIIアート
 ```

@@ -7,7 +7,7 @@ function ahiru {
     $originalLocation = Get-Location
     try {
         Set-Location $ahiruPath
-        python ahiru.py @args
+        python scripts\ahiru.py @args
     } finally {
         Set-Location $originalLocation
     }
