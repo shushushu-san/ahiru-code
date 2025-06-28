@@ -18,7 +18,7 @@
    cd "展開したフォルダのパス"
    ```
 
-   例: `cd "C:\Users\username\Downloads\ahiru-code-main"`
+   例: `cd "C:\Users\username\Downloads\ahiru-code"`
 
 2. **ライブラリをインストール**
 
