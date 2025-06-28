@@ -1,3 +1,15 @@
+import os
+import warnings
+import logging
+
+# 警告メッセージを非表示にする
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # TensorFlowのログを非表示（ERRORのみ表示）
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'  # oneDNNの警告を非表示
+warnings.filterwarnings('ignore')  # 全ての警告を非表示
+
+# TensorFlowのロガーを無効化
+logging.getLogger('tensorflow').setLevel(logging.ERROR)
+
 from transformers import pipeline, AutoTokenizer
 
 # 1. Hugging Faceから日本語感情分析モデルのパイプラインをロード
@@ -8,7 +20,7 @@ sentiment_analyzer = pipeline(
     "sentiment-analysis",
     model=model_name,
     tokenizer=tokenizer,
-    return_all_scores=True
+    top_k=None
 )
 
 def get_vad_scores(text: str) -> dict:
